@@ -25,7 +25,15 @@ This is what you want to call when scanning URLs from user-generated content.
 | Field| Type       | Description
 |------|------------|----------
 | token| Credentials| Your certly token
+| url  | String     | You must specify the URL to scan here.
+| ip   | String     | You are encouraged to optionally pass the visitor's IPv4 address in this field.
+
+## Certly.lookupUrlByRaw
+This is what you want to call when scanning URLs from user-generated content.
+
+| Field| Type       | Description
+|------|------------|----------
+| token| Credentials| Your certly token
 | raw  | String     | Comment or forum post which will be parsed by Certly for URLs.
-| url  | String     | If you do not specify raw, you must specify the URL to scan here.
 | ip   | String     | You are encouraged to optionally pass the visitor's IPv4 address in this field.
 

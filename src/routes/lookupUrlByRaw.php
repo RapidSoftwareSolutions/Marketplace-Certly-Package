@@ -1,10 +1,10 @@
 <?php
 
-$app->post('/api/Certly/lookupUrl', function ($request, $response) {
+$app->post('/api/Certly/lookupUrlByRaw', function ($request, $response) {
 
     $settings = $this->settings;
     $checkRequest = $this->validation;
-    $validateRes = $checkRequest->validate($request, ['token','url']);
+    $validateRes = $checkRequest->validate($request, ['token','raw']);
 
     if(!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback']=='error') {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
@@ -13,20 +13,20 @@ $app->post('/api/Certly/lookupUrl', function ($request, $response) {
     }
 
 
-    $requiredParams = ['token'=>'token','url'=>'url'];
+    $requiredParams = ['token'=>'token','raw'=>'raw'];
     $optionalParams = ['ip'=>'ip'];
     $bodyParams = [
-       'query' => ['token','url','ip']
+        'query' => ['token','raw','ip']
     ];
 
     $data = \Models\Params::createParams($requiredParams, $optionalParams, $post_data['args']);
 
-    
+
 
     $client = $this->httpClient;
     $query_str = "https://api.certly.io/v1/lookup";
 
-    
+
 
     $requestParams = \Models\Params::createRequestBody($data, $bodyParams);
     $requestParams['headers'] = [];

@@ -27,16 +27,58 @@
                     "required": true
                 },
                 {
+                    "name": "url",
+                    "type": "String",
+                    "info": "You must specify the URL to scan here.",
+                    "required": true
+                },
+                {
+                    "name": "ip",
+                    "type": "String",
+                    "info": "You are encouraged to optionally pass the visitor's IPv4 address in this field.",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "https:\/\/api.certly.io\/v1\/lookup",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "token",
+                            "url",
+                            "ip"
+                        ]
+                    }
+                ]
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "lookupUrlByRaw",
+            "description": "This is what you want to call when scanning URLs from user-generated content.",
+            "args": [
+                {
+                    "name": "token",
+                    "type": "credentials",
+                    "info": "Your certly token",
+                    "required": true
+                },
+                {
                     "name": "raw",
                     "type": "String",
                     "info": "Comment or forum post which will be parsed by Certly for URLs.",
-                    "required": false
-                },
-                {
-                    "name": "url",
-                    "type": "String",
-                    "info": "If you do not specify raw, you must specify the URL to scan here.",
-                    "required": false
+                    "required": true
                 },
                 {
                     "name": "ip",
@@ -54,7 +96,6 @@
                         "parameters": [
                             "token",
                             "raw",
-                            "url",
                             "ip"
                         ]
                     }
