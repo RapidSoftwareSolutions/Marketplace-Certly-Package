@@ -15,6 +15,11 @@
             "token"
         ]
     },
+    "steps": [
+        "Sign in https://guard.certly.io.",
+        "Navigate to dashboard.",
+        "Copy API key."
+    ],
     "blocks": [
         {
             "name": "lookupUrl",
